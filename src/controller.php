@@ -44,23 +44,6 @@ if (($command !== "size") && (!isset($requested_width) || !isset($requested_heig
 }
 
 $image_obj = new ImageProcessor($source_image_file);
-
-switch ($command) {
-    case "contain":
-        $image_obj->contain($requested_width, $requested_height);
-        break;
-    case "cover":
-        $image_obj->cover($requested_width, $requested_height);
-        break;
-    case "crop":
-        $image_obj->crop($requested_width, $requested_height);
-        break;
-    case "size":
-        $image_obj->size($requested_width, $requested_height);
-        break;
-    default:
-        showErrorPage();
-}
-
+$image_obj->{$command}($requested_width, $requested_height);
 header($image_obj->getHeader());
 echo $image_obj->getImageBlob();
