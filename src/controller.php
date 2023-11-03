@@ -46,12 +46,13 @@ if (($command !== "size") && (!isset($requested_width) || !isset($requested_heig
     showErrorPage("500" , "server error, image size out of bounds");
 }
 
-// process request:
+// process image according request:
 $image_obj = new ImageProcessor($source_image_path);
 $image_obj->{$command}($requested_width, $requested_height);
 header($image_obj->getHeader());
 echo $image_obj->getImageBlob();
 
+// is this a cacheable image?:
 if (preg_match($config['cachePattern'], $command . '/' . $params)) {
     // cache image:
     $dir = $_SERVER['DOCUMENT_ROOT'] . '/' . $command . '/' . $params . '/'. dirname($requested_image_path);
