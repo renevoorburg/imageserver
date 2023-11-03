@@ -1,7 +1,8 @@
 {
-  "maxWidth": 5000,
-  "minWidth": 4,
+  "maxWidth":  5000,
+  "minWidth":  4,
   "maxHeight": 4000,
   "minHeight": 4,
-  "cachePattern": ""
+  "sourceDir": "auto",
+  "cachePattern": "@^(crop/(w220xh124|w175xh175)|cover/w268xh268|size/h124|size/w800)$@"
 }
