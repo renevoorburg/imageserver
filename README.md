@@ -23,11 +23,11 @@ And no, it will not boil your water if you need to the implement the IIIF Presen
 
 The imageserver implements 5 commands, that are comparable to CSS properties used for background images. Here are some examples of how to call it:
 
- 1. https://server.com/cover/w280xh280/path/to/image.jpg
- 2. https://server.com/contain/w120xh60/path/to/image.jpg
- 3. https://server.com/crop/w100xh80/path/to/image.jpg
- 4. https://server.com/size/h800/path/to/image.jpg
- 5. https://server.com/auto/path/to/image.jpg
+ 1. https://server.com/**cover/w280xh280**/path/to/image.jpg
+ 2. https://server.com/**contain/w120xh60**/path/to/image.jpg
+ 3. https://server.com/**crop/w100xh80**/path/to/image.jpg
+ 4. https://server.com/**size/h800**/path/to/image.jpg
+ 5. https://server.com/**auto**/path/to/image.jpg
 
  
 The **cover** command takes in the second segment of the path the width and height in pixels of the box *the smallest possible resized image should be able to cover fully*. The aspect ratio is kept.
