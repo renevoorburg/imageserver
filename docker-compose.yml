@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  image-dev:
+    build: .
+    ports:
+      - "8082:80"
+    volumes:
+      - .:/var/www
+    profiles:
+      - dev
