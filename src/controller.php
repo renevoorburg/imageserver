@@ -55,6 +55,8 @@ if ( (isset($requested_width) && ($requested_width < $config['minWidth'] || $req
 if (($command !== "size") && (!isset($requested_width) || !isset($requested_height) )) {
     showErrorPage("500" , "server error, image size out of bounds");
 }
+$requested_width = isset($requested_width) ? (int) $requested_width : null;
+$requested_height = isset($requested_height) ? (int) $requested_height: null;
 
 // process image according request:
 $image_obj = new ImageProcessor($source_image_path);

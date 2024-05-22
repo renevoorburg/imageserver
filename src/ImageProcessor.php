@@ -9,7 +9,7 @@ class ImageProcessor extends Imagick
         $this->autoRotateImage();
     }
 
-    public function contain($requested_width, $requested_height)
+    public function contain(int $requested_width, int $requested_height)
     {
         // 0 -preserve aspect ratio, fit image in contains of specified box:
         $new_width = $requested_width ;
@@ -21,7 +21,7 @@ class ImageProcessor extends Imagick
         $this->resizeImage((int)$new_width, (int)$new_height, imagick::FILTER_LANCZOS, 1);
     }
 
-    public function cover($requested_width, $requested_height)
+    public function cover(int $requested_width, int $requested_height)
     {
         // 6 -preserve aspect ratio, fit image to fully cover specified box:
         $factor_height = $requested_height / $this->getImageHeight();
@@ -33,7 +33,7 @@ class ImageProcessor extends Imagick
         $this->resizeImage((int)$new_width, (int)$new_height, imagick::FILTER_LANCZOS, 1);
     }
 
-    public function crop($requested_width, $requested_height)
+    public function crop(int $requested_width, int $requested_height)
     {
         $requested_aspect_rate = $requested_width / $requested_height;
         $source_aspect_rate = $this->getImageWidth() / $this->getImageHeight();
@@ -47,7 +47,7 @@ class ImageProcessor extends Imagick
         $this->resizeImage((int)$requested_width, (int)$requested_height, imagick::FILTER_LANCZOS, 1);
     }
 
-    public function size($requested_width, $requested_height)
+    public function size(?int $requested_width, ?int $requested_height)
     {
         if (isset($requested_width) && !isset($requested_height)) {
             //  3 -preserve aspect ratio, fit width to specified box:
