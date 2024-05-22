@@ -1,4 +1,5 @@
-**/public/auto/*
+/.idea/*
+**/public/contain/*
 **/public/cover/*
 **/public/crop/*
 **/public/size/*

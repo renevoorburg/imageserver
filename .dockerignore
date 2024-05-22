@@ -1,8 +1,13 @@
-.dockerignore
 .DS_Store
+.dockerignore
 .git
 .gitignore
 .gitmodules
 .idea
+/public/auto/*
+/public/contain/*
+/public/cover/*
+/public/crop/*
+/public/size/*
 LICENSE
 README.md

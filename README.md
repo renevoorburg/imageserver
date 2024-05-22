@@ -7,7 +7,7 @@ It resizes images using an URL based API, and might even cache them too.
 
 Who needs yet another imageserver and its custom API when there is the IIIF Image API?
 
-The predecessor of this imageserver started serving images for [Vici.org](https://vici.org) in the year 2011, even before IIIF was born. Even now, there are various reasons to use this code and API in stead of an implementation of the IIIF Image API (as for example by [Cantaloupe](https://cantaloupe-project.github.io)).
+The predecessor of this imageserver started serving images for [Vici.org](https://vici.org) in the year 2011, even before IIIF was born. Even now, there are various reasons to use this code and API instead of an implementation of the IIIF Image API (as for example by [Cantaloupe](https://cantaloupe-project.github.io)).
 
 This imageserver
 
@@ -43,7 +43,7 @@ The **auto** command returns the full image. It is not processed, and dealt with
  
 ## requirements and configuration
  
-Imageserver is written for `PHP 7.4` or newer. It depends on `Imagick`.
+Imageserver is written for `PHP 7.4` or newer (it has been tested with `PHP 8.2`) It depends on `Imagick`.
 The core for this service is in the `nginx` webserver configuration:
 
     location ~ ^/(.*)$ {
@@ -60,7 +60,9 @@ The core for this service is in the `nginx` webserver configuration:
 The `try_files` directive will return the image from disk, and only when it is not there, `controller.php` is called.
 
 The controller uses the configuration in `config/imageserver.json`.
-The controller wil process the image and serve it, and depending on `cachePattern` as defined in `config/imageserver.json`, the result will be written to disk. 
+The controller wil process the image and serve it, and depending on `cachePattern` as defined in `config/imageserver.json`, the result will be written to subdirectory of the webroot. For example, request `https://server.com/size/h800/path/to/image.jpg` will write a file `image.jp` in directory structure `size/h800/path/to/`, in the webroot. The file `image.jpg` is obtained from `auto/path/to/`.  So use `auto` as the mount point for your image storage.
+
+Run imageserver using docker using the settings in `docker-compose.yml` with `docker-compose up -d imageserver-dev`.
 
 
 
